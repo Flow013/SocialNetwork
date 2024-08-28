@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  otus-socialnetwork:
+    image: ${DOCKER_REGISTRY-}otussocialnetwork
+    build:
+      context: ../src
+      dockerfile: ../src/Otus-SocialNetwork/Dockerfile
