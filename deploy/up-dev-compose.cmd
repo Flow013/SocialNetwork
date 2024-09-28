@@ -1,0 +1,1 @@
+docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml --project-name="otus-social-network" up --build
