@@ -7,6 +7,14 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus-SocialNetwork", "Otus-SocialNetwork\Otus-SocialNetwork.csproj", "{AF7EEBE6-EA19-4ECB-B417-D23CD1BEBDCD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{634CBB02-90A2-430F-909C-9D3399337453}"
+	ProjectSection(SolutionItems) = preProject
+		..\deploy\docker-compose.override.yml = ..\deploy\docker-compose.override.yml
+		..\deploy\docker-compose.yml = ..\deploy\docker-compose.yml
+		..\README.md = ..\README.md
+		..\deploy\up-dev-compose.cmd = ..\deploy\up-dev-compose.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

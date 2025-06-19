@@ -22,13 +22,12 @@ public class DatabaseContext : IDatabaseContext, IDisposable
         await this.db.DisposeAsync();
     }
 
-    public async Task<(bool isSuccess, string msg, AccountEntity? account)> GetLoginAsync(string id)
+    public async Task<(bool isSuccess, string msg, AccountEntity? account)> GetLoginAsync(string id, CancellationToken cancellationToken)
     {
-        await using var con = await db.OpenConnectionAsync();
-        await using var cmd = db.CreateCommand("SELECT id, \"password\" FROM public.account WHERE id = @id LIMIT 1;");
+        await using var con = await db.OpenConnectionAsync(cancellationToken);
         var sql = "SELECT id, \"password\" FROM public.account WHERE id = @id LIMIT 1;";
-        var items = con.Query<AccountEntity>(sql, new { id = id });
-        if (items.Count() > 0) { return (true, "OK", items.First()); }
+        var items = await con.QueryAsync<AccountEntity>(sql, new { id = id });
+        if (items.Any()) { return (true, "OK", items.First()); }
 
         return (false, "Not found", null);
     }
