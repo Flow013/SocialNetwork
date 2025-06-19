@@ -55,7 +55,7 @@ public class UsersLoginCommand
 
         public async Task<Result<UsersLoginResponse>> Handle(UsersLoginRequest request, CancellationToken cancellationToken)
         {
-            var login = await _db.GetLoginAsync(request.Body.Id);
+            var login = await _db.GetLoginAsync(request.Body.Id, cancellationToken);
             if (login.isSuccess)
             {
                 var isPasswordOk = _pass.VerifyHashedPassword(login.account.Password, request.Body.Password);

@@ -6,7 +6,7 @@ namespace OtusSocialNetwork.Database;
 
 public interface IDatabaseContext
 {
-    Task<(bool isSuccess, string msg, AccountEntity? account)> GetLoginAsync(string id);
+    Task<(bool isSuccess, string msg, AccountEntity? account)> GetLoginAsync(string id, CancellationToken cancellationToken);
     Task<(bool isSuccess, string msg, string userId)> RegisterAsync(UserEntity user, string password);
     Task<(bool isSuccess, string msg, UserEntity? user)> GetUserAsync(string id);
 
